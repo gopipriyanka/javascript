@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            border: 2px solid black;
+            width:350px;
+            margin-left: 500px;
+            margin-top: 120px;
+            padding: 5px;
+            line-height: 40px;
+        }
+        .mtr
+        {
+            outline: none;
+            border-top: 1px;
+            border-left: 1px;
+            border-right: 1px;
+        }
+        .unt
+        {
+            outline: none;
+            border-top: 1px;
+            border-left: 1px;
+            border-right: 1px;
+        }
+        .cty
+        {
+            outline: none;
+            border-top: 1px;
+            border-left: 1px;
+            border-right: 1px;
+        }
+        .building
+        {
+            outline: none;
+            border-top: 1px;
+            border-left: 1px;
+            border-right: 1px;
+        }
+        .btn
+        {
+            background-color: green;
+            border-radius: 10px;
+            width: 80px;
+        }
+        .btn1
+        {
+            background-color: red;
+            border-radius: 10px;
+            width:80px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <h1 align="center">TSSPDCL</h1>
+        <tr>
+            <td><label>Meter Number</label></td>
+            <td><input class="mtr" id="meter"></td>
+        </tr>
+        <tr>
+            <td><label>Number of Units</label></td>
+            <td><input class="unt" id="units"></td>
+        </tr>
+        <tr>
+            <td><label>City</label></td>
+            <td><select class="cty" id="city">
+                <option value="0">Select your city</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Bangalore">Bangalore</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>Building Type</td>
+            <td><select class="building" id="build">
+                <option value="0">Select your building</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Non-commercial">Non-commercial</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><label>Total amount</label></td>
+            <td><label id="label"></label></td>
+        </tr>
+        <tr>
+            <td><button class="btn" onclick="current()">Submit</button></td>
+            <td><button class="btn1" onclick="current()">Cancel</button></td>
+        </tr>
+    </table>
+    <script>
+        function current()
+        {
+            var meter1=document.getElementById("meter").value;
+            var unit=document.getElementById("units").value;
+            var city1=document.getElementById("city").value;
+            var building=document.getElementById("build").value;
+            if(city1=="Hyderabad"&&building=="Commercial")
+            {
+                unitcharge=12;
+                gst=6;
+            }
+            else if(city1=="Hyderabad"&&building=="Non-commercial")
+            {
+                unitcharge=10;
+                gst=5;
+            }
+            if(city1=="Bangalore"&&building=="Commercial")
+            {
+                unitcharge=15;
+                gst=8;
+            }
+            else if(city1=="Bangalore"&&building=="Non-commercial")
+            {
+                unitcharge=11;
+                gst=6;
+            }
+            var total=parseInt(unit*unitcharge)
+            var totalamount=parseInt((total*gst)/100)
+            var final=parseInt(total+totalamount)
+            document.getElementById("label").innerHTML=+final;
+        }
+    </script>
+</body>
+</html>
